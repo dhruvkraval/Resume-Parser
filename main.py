@@ -5,8 +5,9 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == "POST":
-        print("hi")
-    return render_template('UI.html')
+        if request.form.get('action1') == 'VALUE1':
+           print("hi")
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
