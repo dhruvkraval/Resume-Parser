@@ -26,14 +26,22 @@ def clean(txt):
      stop = stopwords.words('english')
      clean_txt = [w for w in clean_txt if not w in stop] 
      return(' '.join([str(elem) for elem in clean_txt]))
+def noun(txt):
+     blob = TextBlob(txt)
+     return blob.noun_phrases
 
 def percent_match (resume, job):
-    resume = clean(resume)
-    job = clean(job)
+    resume = (' '.join([str(elem) for elem in noun(clean(resume))]))
+    job = (' '.join([str(elem) for elem in noun(clean(job))]))
+    #resume = clean(resume)
+    #job = clean(job)
     text = [resume, job]
 
+    print(resume)
+    print(job)
     cv = CountVectorizer()
     count_matrix = cv.fit_transform(text)
+
 
 
     matchPercentage = cosine_similarity(count_matrix)[0][1] * 100
