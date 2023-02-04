@@ -12,7 +12,7 @@ def getValue():
     if request.form.get('action1') == 'Submit':
         jobdescription = request.form.get('jobdescription')
         resumeText = request.form.get('resumepaste')
-        DescriptionMatch.takeInput(resumeText, jobdescription)
+        rating = DescriptionMatch.takeInput(resumeText, jobdescription)
     return render_template('ui.html')
 
 if __name__ == '__main__':
