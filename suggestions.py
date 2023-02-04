@@ -34,4 +34,6 @@ def suggestions(job, resume):
     temp1 = UncommonWords(temp, resume)
     temp1 = ' '.join([str(elem) for elem in temp1])
     blob = TextBlob(temp1)
+    #blob = (' '.join([str(elem) for elem in blob.noun_phrases]))
+
     return blob.noun_phrases

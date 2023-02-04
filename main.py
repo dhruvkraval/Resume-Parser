@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import DescriptionMatch
+import suggestions
 app = Flask(__name__)
 
 @app.route('/')
@@ -12,8 +13,9 @@ def getValue():
     if request.form.get('action1') == 'Submit':
         jobdescription = request.form.get('jobdescription')
         resumeText = request.form.get('resumepaste')
-        rating = DescriptionMatch.takeInput(resumeText, jobdescription)
-    return render_template('ui.html')
+        rating = DescriptionMatch.resume_rating(resumeText, jobdescription)
+        ret = suggestions.suggestions(jobdescription,resumeText)
+    return render_template('pass.html', name=rating, suggestions = ret)
 
 if __name__ == '__main__':
     # test.testing()
