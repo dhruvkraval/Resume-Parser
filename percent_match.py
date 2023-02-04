@@ -48,3 +48,15 @@ def percent_match (resume, job):
     #matchPercentage = math.sqrt(matchPercentage) *10 
     #matchPercentage = math.sqrt(matchPercentage) *10 
     return round(matchPercentage, 2)
+
+def rating(match):
+
+     match = match *5
+     if(match >= 80):
+          return "GREAT"
+     if(match >= 60):
+          return "GOOD"
+     if(match >= 40):
+          return "OK"
+     return "BAD"
+

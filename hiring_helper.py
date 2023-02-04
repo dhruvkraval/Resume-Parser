@@ -13,24 +13,28 @@ import math
 import percent_match
 import suggestions
 from PyPDF2 import PdfReader
+import os
+# assign directory
+
+directory = 'files'
+job =  "txt"
 
 
-for k in range(1,100):
-    # open the pdf file
-    reader = PdfReader('example.pdf')
-    # extracting text from page
-    # get number of pages
-
-    # define keyterms
-    scores ={} 
-    # extract text and do the search
-    for i in range(0, reader.pages):
-        page = reader.pages[i]
+f = os.path.join(directory, filename)
+scores ={} 
+# extract text and do the search
+for filename in os.listdir(directory):
+    f = os.path.join(directory, filename)
+    # checking if it is a file
+    if os.path.isfile(f):
+        reader = PdfReader('filename')
+        page = reader.pages[0]
         resume = page.extract_text()
-        scores[i] = percent_match(resume)
+        scores[filename] = percent_match(resume,job)
 
 
-print(scores)
+scores = sorted(scores)
+
     
 
         
